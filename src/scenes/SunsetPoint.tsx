@@ -2,10 +2,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const teasingTexts = [
-  "Are you even driving properly?",
-  "Focus na!",
+  "Proud of you 😜",
+  "Ye kaisi road pe aa gaye??",
   "Slow down!!",
-  "You call this riding? 😂",
+  "Waha chalte hai better view aayega",
+  "Isolated spot pe kyo le jaa rahe ho?? Oh-",
 ];
 
 const SunsetPoint = () => {
@@ -14,10 +15,10 @@ const SunsetPoint = () => {
 
   useEffect(() => {
     if (arrived) return;
-    const timer = setTimeout(() => setArrived(true), 8000);
+    const timer = setTimeout(() => setArrived(true), 3000 * teasingTexts.length + 1000);
     const textTimer = setInterval(() => {
       setFloatingTextIdx(i => (i + 1) % teasingTexts.length);
-    }, 2200);
+    }, 3000);
     return () => { clearTimeout(timer); clearInterval(textTimer); };
   }, [arrived]);
 
@@ -38,6 +39,14 @@ const SunsetPoint = () => {
             ? 'linear-gradient(to bottom, hsl(25, 80%, 55%) 0%, hsl(340, 60%, 40%) 40%, hsl(260, 40%, 20%) 100%)'
             : 'linear-gradient(to bottom, hsl(200, 50%, 60%) 0%, hsl(35, 60%, 65%) 100%)',
           transition: 'background 2s ease',
+        }}
+      />
+
+      {/* Contrast veil for text readability */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to bottom, hsl(224, 40%, 6%, 0.32) 0%, hsl(224, 40%, 6%, 0.48) 100%)',
         }}
       />
 
@@ -63,7 +72,7 @@ const SunsetPoint = () => {
           <AnimatePresence mode="wait">
             <motion.p
               key={floatingTextIdx}
-              className="absolute scene-text text-lg text-accent/80 italic"
+              className="absolute scene-text text-lg md:text-xl text-white italic font-medium [text-shadow:0_2px_12px_rgba(0,0,0,0.7)]"
               style={{
                 left: `${stablePositions[floatingTextIdx].x}%`,
                 top: `${stablePositions[floatingTextIdx].y}%`,
@@ -114,7 +123,7 @@ const SunsetPoint = () => {
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="scene-text text-3xl md:text-4xl mb-4"
+          className="scene-text text-3xl md:text-4xl mb-4 text-white font-semibold [text-shadow:0_2px_14px_rgba(0,0,0,0.75)]"
         >
           🌄 The Sunset Point
         </motion.h2>
@@ -124,11 +133,12 @@ const SunsetPoint = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
+            className="glass-panel px-5 py-4 rounded-xl"
           >
-            <p className="scene-text text-xl italic">
+            <p className="scene-text text-xl italic text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
               "Somewhere between teasing and silence…"
             </p>
-            <p className="scene-text text-lg italic text-primary/70 mt-1">
+            <p className="scene-text text-lg italic text-white/90 mt-1 [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
               "we found peace"
             </p>
           </motion.div>

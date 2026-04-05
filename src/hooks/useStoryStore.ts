@@ -1,4 +1,4 @@
-export const TOTAL_SCENES = 14;
+export const TOTAL_SCENES = 15;
 
 export const SCENE_TITLES = [
   "Sweet Beginning",
@@ -12,6 +12,7 @@ export const SCENE_TITLES = [
   "The Sunset Point",
   "8-Minute Hug",
   "Princess Carry",
+  "The Fall",
   "You Came Anyway",
   "Transformation",
   "Forever"

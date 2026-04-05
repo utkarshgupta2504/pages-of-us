@@ -31,6 +31,14 @@ const FiftyKmRide = () => {
         }}
       />
 
+      {/* Contrast veil for legible foreground text */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to bottom, hsl(224, 40%, 6%, 0.28) 0%, hsl(224, 40%, 6%, 0.52) 100%)',
+        }}
+      />
+
       {/* Passing trees */}
       <div className="absolute bottom-16 w-full overflow-hidden h-40">
         {Array.from({ length: 12 }).map((_, i) => (
@@ -65,7 +73,7 @@ const FiftyKmRide = () => {
               transition={{ duration: 3, repeat: Infinity }}
             />
           </div>
-          <p className="scene-text text-xs text-center text-primary/40 mt-2">~ the lake ~</p>
+          <p className="scene-text text-xs text-center text-white/85 mt-2 [text-shadow:0_2px_8px_rgba(0,0,0,0.7)]">~ the lake ~</p>
         </motion.div>
       )}
 
@@ -102,23 +110,23 @@ const FiftyKmRide = () => {
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="scene-text text-3xl md:text-4xl mb-4"
+          className="scene-text text-3xl md:text-4xl mb-4 text-white font-semibold [text-shadow:0_2px_14px_rgba(0,0,0,0.75)]"
         >
           🛣️ The 50km Ride
         </motion.h2>
 
         {/* Distance counter */}
         <motion.div className="glass-panel px-6 py-3 rounded-xl mb-6 inline-block">
-          <p className="scene-text text-2xl">{distance.toFixed(1)} km</p>
+          <p className="scene-text text-2xl text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.6)]">{distance.toFixed(1)} km</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: distance >= 45 ? 1 : 0 }}
-          className="mt-4"
+          className="mt-4 glass-panel px-5 py-4 rounded-xl"
         >
-          <p className="scene-text text-xl italic">"50 kilometers…"</p>
-          <p className="scene-text text-lg italic text-primary/70 mt-1">
+          <p className="scene-text text-xl italic text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">"50 kilometers…"</p>
+          <p className="scene-text text-lg italic text-white/90 mt-1 [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
             "and I still didn't want the road to end"
           </p>
         </motion.div>

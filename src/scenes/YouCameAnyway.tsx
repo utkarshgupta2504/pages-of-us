@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const lines = [
-  { text: "You didn't have to come…", delay: 2 },
-  { text: "but you did", delay: 4.5 },
-  { text: "again…", delay: 7 },
-  { text: "and again…", delay: 9 },
-  { text: "and again", delay: 11 },
+  { text: "You showed up…", delay: 2 },
+  { text: "Not just once…", delay: 4.5 },
+  { text: "but again…", delay: 6.5 },
+  { text: "and again…", delay: 8.5 },
+  { text: "You took care of me…", delay: 10.5 },
+  { text: "in ways I didn't even know I needed", delay: 13 },
+  { text: "I didn't have to ask", delay: 15.5 },
 ];
 
 const YouCameAnyway = () => {
@@ -17,7 +19,7 @@ const YouCameAnyway = () => {
     const timers = lines.map((line, i) =>
       setTimeout(() => setVisibleLines(prev => [...prev, i]), line.delay * 1000)
     );
-    const finalTimer = setTimeout(() => setShowFinal(true), 14000);
+    const finalTimer = setTimeout(() => setShowFinal(true), 18000);
     return () => { timers.forEach(clearTimeout); clearTimeout(finalTimer); };
   }, []);
 

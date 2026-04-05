@@ -13,6 +13,7 @@ const FiftyKmRide = lazy(() => import('@/scenes/FiftyKmRide'));
 const SunsetPoint = lazy(() => import('@/scenes/SunsetPoint'));
 const EightMinuteHug = lazy(() => import('@/scenes/EightMinuteHug'));
 const PrincessCarry = lazy(() => import('@/scenes/PrincessCarry'));
+const TheFall = lazy(() => import('@/scenes/TheFall'));
 const YouCameAnyway = lazy(() => import('@/scenes/YouCameAnyway'));
 const Transformation = lazy(() => import('@/scenes/Transformation'));
 const FinalPage = lazy(() => import('@/scenes/FinalPage'));
@@ -20,7 +21,7 @@ const FinalPage = lazy(() => import('@/scenes/FinalPage'));
 const scenes = [
   SweetBeginning, ShyComfort, TerraceScene, Confession, MemoryMap,
   KizaKaya, ScooterJourney, FiftyKmRide, SunsetPoint,
-  EightMinuteHug, PrincessCarry, YouCameAnyway, Transformation, FinalPage,
+  EightMinuteHug, PrincessCarry, TheFall, YouCameAnyway, Transformation, FinalPage,
 ];
 
 const SceneLoader = () => (

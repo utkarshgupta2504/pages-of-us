@@ -24,7 +24,7 @@ const ShyComfort = () => {
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary flex items-center justify-center text-3xl">
             😊
           </div>
-          <p className="scene-text text-sm mt-2 text-primary/60">playful</p>
+          <p className="scene-text text-sm mt-2 text-primary/60">playful (Me)</p>
         </motion.div>
 
         {/* Shy character */}
@@ -40,7 +40,7 @@ const ShyComfort = () => {
             {helped ? '😄' : '😶'}
           </motion.div>
           <p className="scene-text text-sm mt-2 text-primary/60">
-            {helped ? 'not shy anymore!' : 'shy...'}
+            {helped ? 'not shy anymore!' : 'shy... (you)'}
           </p>
         </motion.div>
       </div>
@@ -55,7 +55,7 @@ const ShyComfort = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Help? 🤝
+          Need Help? 🤝
         </motion.button>
       )}
 
@@ -66,7 +66,7 @@ const ShyComfort = () => {
           className="text-center mt-4 space-y-2"
         >
           <p className="scene-text text-xl italic">"You is shy… but not for long"</p>
-          <p className="scene-text text-lg text-primary/70">"I is problem… and also solution"</p>
+          <p className="scene-text text-lg text-primary/70">"I find problem… and also solution"</p>
         </motion.div>
       )}
     </div>
