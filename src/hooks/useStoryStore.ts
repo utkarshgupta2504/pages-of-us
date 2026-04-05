@@ -1,4 +1,4 @@
-export const TOTAL_SCENES = 15;
+export const TOTAL_SCENES = 17;
 
 export const SCENE_TITLES = [
   "Sweet Beginning",
@@ -7,6 +7,8 @@ export const SCENE_TITLES = [
   "Confession",
   "Memory Map",
   "Kiza Kaya",
+  "The Gamer You Became",
+  "Our Little Screen World",
   "Scooter Journey",
   "The 50km Ride",
   "The Sunset Point",

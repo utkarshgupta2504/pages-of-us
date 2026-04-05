@@ -171,7 +171,7 @@ const TerraceScene = () => {
           animate={{ opacity: 1 }}
           className="scene-text text-3xl md:text-4xl mb-4"
         >
-          🌇 The Terrace
+          🌇 The Terrace (Sutta breaks)
         </motion.h2>
 
         <AnimatePresence>
