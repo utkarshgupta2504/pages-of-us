@@ -1,17 +1,34 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const sweets = [
-  { id: 1, color: '#E8B4D8', label: '🍬', x: -80, y: -20 },
-  { id: 2, color: '#C8A2C8', label: '🍫', x: 0, y: -40 },
-  { id: 3, color: '#F0C8E0', label: '🍭', x: 80, y: -20 },
-  { id: 4, color: '#D8B4E8', label: '🧁', x: -40, y: 30 },
-  { id: 5, color: '#C8D8A2', label: '🍩', x: 40, y: 30, easter: true },
+const cakes = [
+  { id: 1, label: '🎂', x: -80, y: -25 },
+  { id: 2, label: '🧁', x: -30, y: -45 },
+  { id: 3, label: '🍰', x: 30, y: -45 },
+  { id: 4, label: '🎂', x: 80, y: -25 },
+  { id: 5, label: '🧁', x: -50, y: 15 },
+  { id: 6, label: '🍰', x: 0, y: 25 },
+  { id: 7, label: '🎂', x: 50, y: 15 },
 ];
 
 const SweetBeginning = () => {
   const [opened, setOpened] = useState(false);
-  const [clickedSweet, setClickedSweet] = useState<number | null>(null);
+  const [clickedCake, setClickedCake] = useState<number | null>(null);
+  const [particles, setParticles] = useState<{ id: number; x: number; y: number }[]>([]);
+
+  const spawnParticles = (cakeId: number) => {
+    const cake = cakes.find(c => c.id === cakeId);
+    if (!cake) return;
+    const newParticles = Array.from({ length: 8 }, (_, i) => ({
+      id: Date.now() + i,
+      x: cake.x,
+      y: cake.y,
+    }));
+    setParticles(prev => [...prev, ...newParticles]);
+    setTimeout(() => {
+      setParticles(prev => prev.filter(p => !newParticles.find(np => np.id === p.id)));
+    }, 1000);
+  };
 
   return (
     <div className="h-full flex flex-col items-center justify-center relative">
@@ -21,10 +38,10 @@ const SweetBeginning = () => {
         transition={{ delay: 0.3 }}
         className="scene-text text-3xl md:text-4xl mb-12"
       >
-        🍬 Sweet Beginning
+        🍰 Sweet Beginning
       </motion.h2>
 
-      {/* Sweet box */}
+      {/* Cake box */}
       <motion.div
         className="relative cursor-pointer"
         onClick={() => setOpened(true)}
@@ -40,42 +57,69 @@ const SweetBeginning = () => {
             </motion.p>
           ) : (
             <div className="relative w-64 h-48 md:w-80 md:h-56">
-              {sweets.map((sweet) => (
+              {cakes.map((cake) => (
                 <motion.div
-                  key={sweet.id}
+                  key={cake.id}
                   className="absolute cursor-pointer text-4xl md:text-5xl"
-                  style={{ left: `calc(50% + ${sweet.x}px)`, top: `calc(50% + ${sweet.y}px)` }}
+                  style={{ left: `calc(50% + ${cake.x}px)`, top: `calc(50% + ${cake.y}px)` }}
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: sweet.id * 0.15, type: 'spring' }}
-                  whileHover={{ scale: 1.3, rotate: [0, -10, 10, 0], transition: { duration: 0.4 } }}
-                  onClick={(e) => { e.stopPropagation(); setClickedSweet(sweet.id); }}
+                  transition={{ delay: cake.id * 0.12, type: 'spring', stiffness: 200 }}
+                  whileHover={{
+                    y: [0, -12, 0],
+                    transition: { duration: 0.4, repeat: Infinity },
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setClickedCake(cake.id);
+                    spawnParticles(cake.id);
+                  }}
                 >
-                  {sweet.label}
+                  {cake.label}
                 </motion.div>
               ))}
+
+              {/* Particle bursts */}
+              <AnimatePresence>
+                {particles.map((p) => (
+                  <motion.div
+                    key={p.id}
+                    className="absolute pointer-events-none"
+                    style={{ left: `calc(50% + ${p.x}px)`, top: `calc(50% + ${p.y}px)` }}
+                    initial={{ opacity: 1, scale: 0 }}
+                    animate={{
+                      opacity: 0,
+                      scale: 1.5,
+                      x: (Math.random() - 0.5) * 60,
+                      y: (Math.random() - 0.5) * 60,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <span className="text-lg">✨</span>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           )}
         </motion.div>
       </motion.div>
 
-      {/* Messages */}
-      {clickedSweet && (
-        <motion.div
-          key={clickedSweet}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-8 text-center"
-        >
-          {sweets.find(s => s.id === clickedSweet)?.easter ? (
-            <p className="scene-text text-xl text-accent">dumbum detected 😄</p>
-          ) : (
-            <p className="scene-text text-lg italic">
-              Before anything else… I just wanted you to feel at home
+      {/* Message */}
+      <AnimatePresence>
+        {clickedCake && (
+          <motion.div
+            key={clickedCake}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-8 text-center"
+          >
+            <p className="scene-text text-xl italic">
+              "Lo ji, aap bhi khao"
             </p>
-          )}
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

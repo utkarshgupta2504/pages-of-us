@@ -1,21 +1,4 @@
-import { create } from 'zustand';
-
-interface StoryState {
-  currentScene: number;
-  bookOpen: boolean;
-  audioEnabled: boolean;
-  setScene: (scene: number) => void;
-  nextScene: () => void;
-  prevScene: () => void;
-  openBook: () => void;
-  toggleAudio: () => void;
-  totalScenes: number;
-}
-
-// We'll use a simple zustand-like pattern with useState instead
-// since zustand isn't installed. We'll use React context.
-
-export const TOTAL_SCENES = 10;
+export const TOTAL_SCENES = 14;
 
 export const SCENE_TITLES = [
   "Sweet Beginning",
@@ -23,9 +6,13 @@ export const SCENE_TITLES = [
   "The Terrace",
   "Confession",
   "Memory Map",
+  "Kiza Kaya",
   "Scooter Journey",
+  "The 50km Ride",
+  "The Sunset Point",
   "8-Minute Hug",
   "Princess Carry",
+  "You Came Anyway",
   "Transformation",
   "Forever"
 ];

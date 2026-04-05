@@ -7,15 +7,20 @@ const ShyComfort = lazy(() => import('@/scenes/ShyComfort'));
 const TerraceScene = lazy(() => import('@/scenes/TerraceScene'));
 const Confession = lazy(() => import('@/scenes/Confession'));
 const MemoryMap = lazy(() => import('@/scenes/MemoryMap'));
+const KizaKaya = lazy(() => import('@/scenes/KizaKaya'));
 const ScooterJourney = lazy(() => import('@/scenes/ScooterJourney'));
+const FiftyKmRide = lazy(() => import('@/scenes/FiftyKmRide'));
+const SunsetPoint = lazy(() => import('@/scenes/SunsetPoint'));
 const EightMinuteHug = lazy(() => import('@/scenes/EightMinuteHug'));
 const PrincessCarry = lazy(() => import('@/scenes/PrincessCarry'));
+const YouCameAnyway = lazy(() => import('@/scenes/YouCameAnyway'));
 const Transformation = lazy(() => import('@/scenes/Transformation'));
 const FinalPage = lazy(() => import('@/scenes/FinalPage'));
 
 const scenes = [
   SweetBeginning, ShyComfort, TerraceScene, Confession, MemoryMap,
-  ScooterJourney, EightMinuteHug, PrincessCarry, Transformation, FinalPage,
+  KizaKaya, ScooterJourney, FiftyKmRide, SunsetPoint,
+  EightMinuteHug, PrincessCarry, YouCameAnyway, Transformation, FinalPage,
 ];
 
 const SceneLoader = () => (
@@ -47,10 +52,10 @@ const SceneContainer = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScene}
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.6 }}
+          exit={{ opacity: 0, scale: 1.03 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
           className="relative z-10 h-full"
         >
           <Suspense fallback={<SceneLoader />}>
