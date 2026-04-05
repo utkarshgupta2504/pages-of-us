@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const nodes = [
   { id: 'ironhill', label: 'Ironhill', emoji: '🍺', x: 15, y: 25, memory: 'That first cider… we were already too comfortable', anim: 'cider' },
   { id: 'travellers', label: "Traveller's Bungalow", emoji: '🍫', x: 55, y: 15, memory: 'Chocolate dessert and conversations that went nowhere… and everywhere', anim: 'dessert' },
-  { id: 'social', label: 'Social', emoji: '🍹', x: 80, y: 40, memory: 'Banarasi Patiala — a name we'll never forget', anim: 'drink' },
+  { id: 'social', label: 'Social', emoji: '🍹', x: 80, y: 40, memory: "Banarasi Patiala — a name we'll never forget", anim: 'drink' },
   { id: 'candlelight', label: 'Candlelight Concert', emoji: '🕯️', x: 30, y: 60, memory: 'The music was good… but I was watching you', anim: 'candle' },
   { id: 'souljam', label: 'Souljam', emoji: '🎵', x: 65, y: 70, memory: 'When the bass dropped, something shifted', anim: 'music' },
 ];
