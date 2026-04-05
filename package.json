@@ -2,7 +2,7 @@
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://utkarshgupta2504.github.io/pages-of-us/",
+  "homepage": "https://utkarshg.is-a.dev/pages-of-us/",
   "type": "module",
   "scripts": {
     "dev": "vite",
