@@ -8,7 +8,7 @@ const messages = [
   { from: 'pause', text: '', delay: 7 },
   { from: 'him', text: 'You know what...', delay: 8 },
   { from: 'him', text: 'I was trying to figure out how to say the same thing', delay: 10 },
-  { from: 'him', text: 'Every time I see you, I forget every word I practiced', delay: 12.5 },
+  { from: 'him', text: 'Because its just been 10 seconds, and I am missing you...', delay: 12.5 },
   { from: 'final', text: 'Omphoooo.', delay: 15 },
 ];
 
