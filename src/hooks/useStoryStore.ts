@@ -19,5 +19,5 @@ export const SCENE_TITLES = [
   "The Fall",
   "You Came Anyway",
   "Transformation",
-  "Forever"
+  "Forever",
 ];
