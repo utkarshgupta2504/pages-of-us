@@ -9,6 +9,7 @@ const Confession = lazy(() => import('@/scenes/Confession'));
 const MemoryMap = lazy(() => import('@/scenes/MemoryMap'));
 const KizaKaya = lazy(() => import('@/scenes/KizaKaya'));
 const GamerYouBecame = lazy(() => import('@/scenes/GamerYouBecame'));
+const ItTakesTwo = lazy(() => import('@/scenes/ItTakesTwo'));
 const OurLittleScreenWorld = lazy(() => import('@/scenes/OurLittleScreenWorld'));
 const ThingsMade = lazy(() => import('@/scenes/ThingsMade'));
 const ScooterJourney = lazy(() => import('@/scenes/ScooterJourney'));
@@ -24,7 +25,7 @@ const FinalPage = lazy(() => import('@/scenes/FinalPage'));
 
 const scenes = [
   SweetBeginning, ShyComfort, TerraceScene, Confession, MemoryMap,
-  KizaKaya, GamerYouBecame, OurLittleScreenWorld, ThingsMade, ScooterJourney, FiftyKmRide, SunsetPoint, TheGreatEscape,
+  KizaKaya, GamerYouBecame, ItTakesTwo, OurLittleScreenWorld, ThingsMade, ScooterJourney, FiftyKmRide, SunsetPoint, TheGreatEscape,
   EightMinuteHug, PrincessCarry, TheFall, YouCameAnyway, Transformation, FinalPage,
 ];
 
