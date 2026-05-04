@@ -59,7 +59,7 @@ const ItTakesTwo = () => {
   };
 
   const handleGardenGrow = () => {
-    setGardenGrowth(prev => (prev < 4 ? prev + 1 : 4));
+    setGardenGrowth(prev => (prev < 6 ? prev + 1 : 6));
   };
 
   const handleSing = (noteIdx: number) => {
@@ -507,37 +507,62 @@ const ItTakesTwo = () => {
               </p>
             </div>
 
-            {/* Growing garden */}
-            <div className="relative h-40 flex items-center justify-center gap-4">
-              {[0, 1, 2, 3].map((idx) => (
-                <motion.button
-                  key={idx}
-                  onClick={handleGardenGrow}
-                  animate={{
-                    scale: gardenGrowth > idx ? 1.2 : 1,
-                    y: gardenGrowth > idx ? -5 : 0,
-                  }}
-                  className="text-4xl hover:scale-110 transition-transform"
-                >
-                  {gardenGrowth > idx ? '🌻' : '🌱'}
-                </motion.button>
-              ))}
+            {/* Cody's transformation through plants */}
+            <div className="relative h-48 flex flex-col items-center justify-center gap-6">
+              {/* Current plant form */}
+              <motion.div
+                key={gardenGrowth}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-7xl"
+              >
+                {gardenGrowth === 0
+                  ? '🌼'
+                  : gardenGrowth === 1
+                    ? '🌵'
+                    : gardenGrowth === 2
+                      ? '🍄'
+                      : gardenGrowth === 3
+                        ? '🌸'
+                        : gardenGrowth === 4
+                          ? '🥔'
+                          : gardenGrowth === 5
+                            ? '🍅'
+                            : '🍋'}
+              </motion.div>
+
+              {/* Stage indicator */}
+              <motion.button
+                onClick={handleGardenGrow}
+                disabled={gardenGrowth >= 7}
+                className={`px-6 py-2 rounded-lg text-white scene-text font-semibold transition-all ${
+                  gardenGrowth < 7
+                    ? 'glass-panel border border-emerald-300/50 hover:border-emerald-300'
+                    : 'glass-panel border border-emerald-300/50 bg-emerald-500/10'
+                }`}
+                whileHover={gardenGrowth < 7 ? { scale: 1.05 } : {}}
+              >
+                {gardenGrowth < 7 ? 'Grow' : '✓ Full Garden'}
+              </motion.button>
             </div>
 
-            {/* Blooming indicator */}
-            {gardenGrowth >= 4 && (
-              <motion.div
-                initial={{ scale: 0, rotate: 0 }}
-                animate={{ scale: 1, rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="text-6xl"
-              >
-                🌸
-              </motion.div>
-            )}
-
             <p className="scene-text text-xs text-emerald-200">
-              {gardenGrowth >= 4 ? '✓ Garden bloomed' : `Growing: ${gardenGrowth} / 4`}
+              {gardenGrowth === 0
+                ? 'Dandelion'
+                : gardenGrowth === 1
+                  ? 'Cactus'
+                  : gardenGrowth === 2
+                    ? 'Mushroom'
+                    : gardenGrowth === 3
+                      ? 'Flower'
+                      : gardenGrowth === 4
+                        ? 'Potato'
+                        : gardenGrowth === 5
+                          ? 'Tomato'
+                          : 'Lemon'}{' '}
+              | Stage: {gardenGrowth + 1} / 7
             </p>
 
             <motion.button
@@ -545,9 +570,9 @@ const ItTakesTwo = () => {
                 setCurrentLevel(5);
                 setNotesSung([]);
               }}
-              disabled={gardenGrowth < 4}
+              disabled={gardenGrowth < 6}
               className={`px-4 py-2 border rounded-lg text-white scene-text text-sm transition-all ${
-                gardenGrowth >= 4
+                gardenGrowth >= 7
                   ? 'glass-panel border-white/20 hover:border-white/40'
                   : 'border-white/10 opacity-50 cursor-default'
               }`}
